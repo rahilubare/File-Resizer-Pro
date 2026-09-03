@@ -1,0 +1,31 @@
+{
+    "name": "file-resizer-pro",
+    "version": "1.0.0",
+    "author": "Antigravity",
+    "main": "main.js",
+    "description": "Desktop wrapper for File Resizer Pro",
+    "scripts": {
+        "start": "electron .",
+        "build:server": "node build-server.js",
+        "dist": "npm run build:server && electron-builder",
+        "package": "electron-packager . FileResizerPro --platform=win32 --arch=x64 --out=dist_v9 --overwrite --icon=app-icon.ico"
+    },
+    "dependencies": {
+        "@auth/core": "^0.41.1",
+        "@hono/auth-js": "^1.1.1",
+        "@hono/node-server": "^1.19.9",
+        "@neondatabase/serverless": "^1.0.2",
+        "argon2": "^0.44.0",
+        "hono": "^4.11.9",
+        "react-router-hono-server": "^2.21.0",
+        "serialize-error": "^13.0.1",
+        "ws": "^8.19.0"
+    },
+    "devDependencies": {
+        "electron": "^31.0.0",
+        "electron-builder": "^24.13.3",
+        "electron-packager": "^17.1.2",
+        "esbuild": "^0.27.3",
+        "png-to-ico": "^3.0.1"
+    }
+}

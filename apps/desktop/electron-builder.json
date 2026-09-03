@@ -1,0 +1,25 @@
+{
+    "appId": "com.fileresizer.pro",
+    "productName": "File Resizer Pro",
+    "directories": {
+        "output": "dist"
+    },
+    "files": [
+        "main.js",
+        "package.json",
+        "server.cjs",
+        {
+            "from": "../web/build/client",
+            "to": "client"
+        },
+        {
+            "from": "node_modules",
+            "to": "node_modules"
+        }
+    ],
+    "win": {
+        "target": "portable",
+        "icon": null,
+        "forceCodeSigning": false
+    }
+}

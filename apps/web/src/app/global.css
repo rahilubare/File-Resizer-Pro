@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Design System Colors */
+    --color-primary: #0F172A;
+    --color-secondary: #1E293B;
+    --color-surface: #0F172A;
+    --color-surface-elevated: #1E293B;
+    --color-cta: #22C55E;
+    --color-cta-hover: #16A34A;
+    --color-background: #020617;
+    --color-text: #F8FAFC;
+    --color-text-muted: #94A3B8;
+    --color-text-dim: #64748B;
+    --color-border: #334155;
+    --color-border-subtle: #1E293B;
+    --color-accent-cyan: #06B6D4;
+    --color-accent-rose: #F43F5E;
+    --color-accent-amber: #F59E0B;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.4);
+    --shadow-lg: 0 10px 15px rgba(0,0,0,0.4);
+    --shadow-xl: 0 20px 25px rgba(0,0,0,0.5);
+    --shadow-glow-green: 0 0 20px rgba(34,197,94,0.15);
+    --shadow-glow-cyan: 0 0 20px rgba(6,182,212,0.15);
+
+    /* Spacing */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+  }
+
+  html, body {
+    font-family: 'Fira Sans', sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  input, textarea, select, button {
+    @apply outline-none focus:outline-none;
+    font-family: 'Fira Sans', sans-serif;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-background);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-dim);
+  }
+}
+
+@layer components {
+  /* Glassmorphism Card */
+  .glass-card {
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(51, 65, 85, 0.5);
+    border-radius: 12px;
+  }
+
+  /* Glow Border */
+  .glow-border {
+    box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.3),
+                0 0 20px rgba(34, 197, 94, 0.08);
+  }
+
+  /* Gradient Background */
+  .gradient-bg {
+    background: linear-gradient(135deg, var(--color-background) 0%, var(--color-primary) 50%, #0C1222 100%);
+  }
+
+  /* Toolbar Glass */
+  .toolbar-glass {
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(51, 65, 85, 0.6);
+  }
+
+  /* Panel Surface */
+  .panel-surface {
+    background: var(--color-primary);
+    border-color: var(--color-border-subtle);
+  }
+
+  /* Button CTA */
+  .btn-cta {
+    background: linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
+    color: white;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 12px 24px;
+    transition: all 200ms ease;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(34, 197, 94, 0.25);
+  }
+  .btn-cta:hover {
+    box-shadow: 0 4px 16px rgba(34, 197, 94, 0.4);
+    transform: translateY(-1px);
+  }
+  .btn-cta:active {
+    transform: translateY(0px);
+  }
+
+  /* Monospace headings */
+  .font-heading {
+    font-family: 'Fira Code', monospace;
+  }
+}
+
+@layer utilities {
+  /* Animations */
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 8px rgba(34,197,94,0.2); }
+    50% { box-shadow: 0 0 20px rgba(34,197,94,0.4); }
+  }
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  @keyframes breathe {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+  }
+  @keyframes progress-stripe {
+    0% { background-position: 0 0; }
+    100% { background-position: 40px 0; }
+  }
+  @keyframes slide-in-right {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.4s ease-out both;
+  }
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  .animate-shimmer {
+    background: linear-gradient(90deg, transparent 30%, rgba(255,255,255,0.05) 50%, transparent 70%);
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+  .animate-breathe {
+    animation: breathe 3s ease-in-out infinite;
+  }
+  .animate-slide-in-right {
+    animation: slide-in-right 0.4s ease-out both;
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-in,
+    .animate-pulse-glow,
+    .animate-shimmer,
+    .animate-breathe,
+    .animate-slide-in-right {
+      animation: none !important;
+    }
+    * {
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
